@@ -1,0 +1,63 @@
+<!--A Design by W3layouts 
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="/css/style2.css" rel='stylesheet' type='text/css'
+	media="all" />
+
+</head>
+<body>
+	<div class="nameTitle">
+		<h1>Quản Lý Khách Mời</h1>
+	</div>
+	<div class="nameAdd">
+	<div><a  th:href="@{/invite}">Thêm Khách Mời</a></div>
+	<div><a th:href="@{/invite/sort}">sắp xếp</a></div>
+	
+	
+	</div>
+
+
+	<div class="table1">
+		<table>
+			<thead>
+				<th scope="col">id</th>
+				<th scope="col">tên</th>
+				<th scope="col">Chứng Minh Thư</th>
+				<th scope="col">ngày sinh</th>
+				<th scope="col">
+					<div>
+						<form th:action="@{/invite/search}" method="POST">
+							<input type="search" placeholder="Tìm Kiếm"
+								name="timkiem" id="timkiem" title="nhập tên khách mời muốn tìm kiếm" > <input type="submit" value="Search"
+								>
+						</form>
+					</div>
+				</th>
+				
+			</thead>
+			<tbody>
+
+				<tr th:each="invite: ${invites}">
+
+					<td><span th:text="${invite.id}"></td>
+					<td><span th:text="${invite.name}"></td>
+					<td><span th:text="${invite.cmt}"></td>
+					<td><span th:text="${invite.dateOfBirth}"></td>
+					<td><a th:href="@{/invite/edit(id=${invite.id})}">sửa</a></td>
+					<td><a th:href="@{/invite/delete(id=${invite.id})}">xóa</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+
+
+</body>
+</html>

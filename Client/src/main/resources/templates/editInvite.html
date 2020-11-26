@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+	integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2"
+	crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+	integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+	crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="../css/style2.css">
+
+</head>
+
+<body>
+	<!-- start menu -->
+	<div>
+		<nav class="navbar navbar-expand-lg navbar-light bg-light text-white">
+			<a class="navbar-brand" href="#"><img alt="" src="/img/menu.png"
+				width="10px" height="10px"></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item active"><a class="nav-link" href="#">Trang
+							Chủ <span class="sr-only">(current)</span>
+					</a></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"> Dịch vụ </a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="#">Điện</a> <a
+								class="dropdown-item" href="#">Nước</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Xe</a>
+						</div></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"> Phòng </a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="#">Thêm Phòng</a> <a
+								class="dropdown-item" href="#">Sửa Phòng</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Xóa Phòng</a>
+						</div></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false"> Sinh Viên </a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item" href="#">Thêm Sinh Viên</a> <a
+								class="dropdown-item" href="#">Sửa Sinh Viên</a>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" href="#">Xóa Sinh Viên</a>
+						</div></li>
+				</ul>
+				<form class="form-inline my-2 my-lg-0">
+					<input class="form-control mr-sm-2" type="search"
+						placeholder="Search" aria-label="Search">
+					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+				</form>
+			</div>
+		</nav>
+	</div>
+	<div class="hai">
+		<div class="hai1">
+			<h1>Sửa Thông Tin Khách Hàng</h1>
+		</div>
+		<form th:object="${invite}" th:action=@{/invite/edit} method="POST">
+		<div>
+				<input type="hidden" value="" placeholder="ID khách mời" id="ten"
+					name="ten" th:field="*{id}" title="hãy nhập vào id sinh viên">
+			</div>
+			<div>
+				<input type="text" value="" placeholder="Tên khách mời" id="ten"
+					name="ten" th:field="*{name}" title="hãy nhập vào tên sinh viên">
+			</div>
+			<div>
+				<input type="text" value="" placeholder="Chứng Minh Thư" id="cmt"
+					name="cmt" th:field="*{cmt}" title="hãy nhập vào chứng minh thư">
+			</div>
+			<div>
+				<input type="date" value="" placeholder="Ngày Sinh"
+					id="ngaysinh" name="ngaysinh" th:field="*{dateOfBirth}"
+					title="hãy nhập vào ngay sinh sinh viên">
+			</div>
+
+
+			<div>
+				<td>Phòng</td> 
+				<select name="phong" id="phong">
+				<tr>
+				<option selected="selected" th:value="${roomNumber}" th:text="${roomNumber}"></option>
+				</tr>
+				<tr th:each="room: ${rooms}">
+				<td>
+				<option th:value="${room.roomNumber}" th:text="${room.roomNumber}"></option>
+				</td>
+				</tr>	
+				</select>
+			</div>
+			<div>
+				<input type="submit" value="Submit" name="add" id="submit">
+			</div>
+
+
+
+		</form>
+	</div>
+
+
+
+</body>
+
+</html>
